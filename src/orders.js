@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
-const Client = () => {
-  const [users, setUsers] = useState([]);
+const Order = () => {
+  const [orders, setUsers] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5124/api/clients')
+    fetch('http://localhost:5124/api/Orders')
       .then((res) => {
         return res.json();
       })
@@ -18,22 +18,21 @@ const Client = () => {
     <center>
       <table class="table table-striped" style={{ "width": "50rem", "alignContent": "center", "color": "white" }}>
         <tr>
-          <th style={txt}>Name</th>
-          <th style={txt}>Email</th>
-          <th style={txt}>Phone Number</th>
-          <th style={txt}>Password</th>
+          <th style={txt}>Order Number</th>
+          <th style={txt}>Description</th>
+          <th style={txt}>Price</th>
+          <th style={txt}>Image</th>
         </tr>
-        {users.map((user) => (
+        {gowns.map((gown) => (
           <tr>
-            <td style={txt}>{user.firstName + " " + user.lastName}</td>
-            <td style={txt}>{user.email}</td>
-            <td style={txt}>{user.phoneNumber}</td>
-            <td style={txt}>{user.password}</td>
+            <td style={txt}>{gown.orderNumber}</td>
+            <td style={txt}>{gown.date}</td>
+            <td style={txt}>{gown.weddingDate}</td>
+            <td style={txt}>{gown.imageCode}</td>
           </tr>
         ))}
       </table>
     </center>
   );
 };
-export default Client;
-
+export default Order;
